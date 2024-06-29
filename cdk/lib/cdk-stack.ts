@@ -17,5 +17,16 @@ export class CdkStack extends cdk.Stack {
       namePrefix,
       envValues,
     });
+
+
+    const ecs = new Ecs(this, 'Ecs', {
+      namePrefix,
+      envValues,
+      vpc: network.vpc,
+    });
+
+    new cdk.CfnOutput(this, 'EcrRepository', {
+      value: ecs.repository.repositoryUri,
+    });
   }
 }

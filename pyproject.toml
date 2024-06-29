@@ -23,8 +23,7 @@ managed = true
 dev-dependencies = []
 
 [tool.rye.scripts]
-test = { cmd = "pytest --junitxml=.reports/junit/test-results.xml" }
-test-coverage = { cmd = "pytest"}
+test = { cmd = "pytest" }
 
 [tool.hatch.metadata]
 allow-direct-references = true

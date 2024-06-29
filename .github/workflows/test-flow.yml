@@ -31,13 +31,13 @@ jobs:
           source "$HOME/.rye/env"
           mkdir -p .reports/coverage
           rye run test | tee .reports/coverage/coverage.txt
-      # - name: Publish Test Report
-      #   uses: mikepenz/action-junit-report@v4
-      #   if: success() || failure()
-      #   with:
-      #     report_paths: '**/junit/test-results.xml'
-      #     github_token: ${{ github.token }}
-      #     include_passed: true
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v4
+        if: success() || failure()
+        with:
+          report_paths: '**/junit/test-results.xml'
+          github_token: ${{ github.token }}
+          include_passed: true
       - name: Pytest coverage comment
         uses: MishaKav/pytest-coverage-comment@main
         with:

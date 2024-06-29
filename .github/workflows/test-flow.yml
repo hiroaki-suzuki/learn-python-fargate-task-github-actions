@@ -6,8 +6,8 @@ on:
   pull_request:
     branches: [ "main" ]
 
-# permissions:
-#   contents: read
+permissions:
+  contents: read
 
 jobs:
   build:
@@ -35,7 +35,9 @@ jobs:
         if: success() || failure()
         with:
           report_paths: '**/junit/test-results.xml'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name:
         uses: romeovs/lcov-reporter-action@v0.3.1
         with:
-          lcov-file: ./coverage/lcov.info
+          lcov-file: ./coverage.info

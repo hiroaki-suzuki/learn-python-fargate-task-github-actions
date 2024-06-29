@@ -24,7 +24,7 @@ dev-dependencies = []
 
 [tool.rye.scripts]
 test = { cmd = "pytest --junitxml=.reports/junit/test-results.xml" }
-test-coverage = { cmd = "pytest --junitxml=.reports/junit/test-results.xml --cov=./ --cov-report=html --cov-report=lcov --cov-report=term-missing"}
+test-coverage = { cmd = "pytest --junitxml=.reports/junit/test-results.xml --cov=./ --cov-report=html --cov-report=lcov --cov-report=xml --cov-report=term-missing"}
 
 [tool.hatch.metadata]
 allow-direct-references = true
@@ -47,6 +47,7 @@ show_missing = true
 
 [tool.coverage.html]
 directory = ".reports/coverage/html"
-
+[tool.coverage.xml]
+output = ".reports/coverage/coverage.xml"
 [tool.coverage.lcov]
 output = ".reports/coverage/coverage.lcov"

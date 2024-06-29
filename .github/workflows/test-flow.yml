@@ -30,3 +30,8 @@ jobs:
         run: |
           source "$HOME/.rye/env"
           rye run pytest --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v4
+        if: success() || failure()
+        with:
+          report_paths: '**/junit/test-results.xml'

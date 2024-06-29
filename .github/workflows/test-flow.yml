@@ -6,8 +6,8 @@ on:
   pull_request:
     branches: [ "main" ]
 
-permissions:
-  contents: read
+# permissions:
+#   contents: read
 
 jobs:
   build:
@@ -35,14 +35,14 @@ jobs:
         if: success() || failure()
         with:
           report_paths: '**/junit/test-results.xml'
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ github.token }}
           include_passed: true
       - name: Pytest coverage comment
         uses: MishaKav/pytest-coverage-comment@main
         with:
           pytest-xml-coverage-path: .reports/coverage/coverage.xml
           junitxml-path: .reports/junit/test-results.xml
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ github.token }}
       - name:
         uses: romeovs/lcov-reporter-action@v0.3.1
         with:

@@ -37,11 +37,9 @@ jobs:
         if: success() || failure()
         with:
           report_paths: '**/junit/test-results.xml'
-          github_token: ${{ github.token }}
           include_passed: true
       - name: Pytest coverage comment
         uses: MishaKav/pytest-coverage-comment@main
         with:
+          hide-comment: true
           pytest-coverage-path: .reports/coverage/coverage.txt
-          junitxml-path: .reports/junit/test-results.xml
-          github-token: ${{ github.token }}

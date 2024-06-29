@@ -9,6 +9,8 @@
 #   generate-hashes: false
 
 -e file:.
+coverage==7.5.4
+    # via pytest-cov
 iniconfig==2.0.0
     # via pytest
 packaging==24.1
@@ -16,4 +18,10 @@ packaging==24.1
 pluggy==1.5.0
     # via pytest
 pytest==8.2.2
+    # via app
+    # via pytest-cov
+    # via pytest-mock
+pytest-cov==5.0.0
+    # via app
+pytest-mock==3.14.0
     # via app

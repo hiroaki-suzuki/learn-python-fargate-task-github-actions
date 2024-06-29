@@ -42,6 +42,7 @@ jobs:
         with:
           pytest-xml-coverage-path: .reports/coverage/coverage.xml
           junitxml-path: .reports/junit/test-results.xml
+          github_token: ${{ secrets.GITHUB_TOKEN }}
       - name:
         uses: romeovs/lcov-reporter-action@v0.3.1
         with:

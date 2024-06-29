@@ -31,7 +31,6 @@ jobs:
           source "$HOME/.rye/env"
           mkdir -p .reports/coverage
           rye run test | tee .reports/coverage/coverage.txt
-          ls -al .reports/coverage
       # - name: Publish Test Report
       #   uses: mikepenz/action-junit-report@v4
       #   if: success() || failure()
@@ -40,24 +39,7 @@ jobs:
       #     github_token: ${{ github.token }}
       #     include_passed: true
       - name: Pytest coverage comment
-        id: coverageComment
         uses: MishaKav/pytest-coverage-comment@main
         with:
           pytest-coverage-path: .reports/coverage/coverage.txt
           junitxml-path: .reports/junit/test-results.xms
-          github-token: ${{ github.token }}
-      - name: Check the output coverage
-        run: |
-            echo "Coverage Percentage - ${{ steps.coverageComment.outputs.coverage }}"
-            echo "Coverage Color - ${{ steps.coverageComment.outputs.color }}"
-            echo "Coverage Html - ${{ steps.coverageComment.outputs.coverageHtml }}"
-            echo "Summary Report - ${{ steps.coverageComment.outputs.summaryReport }}"
-        
-            echo "Coverage Warnings - ${{ steps.coverageComment.outputs.warnings }}"
-        
-            echo "Coverage Errors - ${{ steps.coverageComment.outputs.errors }}"
-            echo "Coverage Failures - ${{ steps.coverageComment.outputs.failures }}"
-            echo "Coverage Skipped - ${{ steps.coverageComment.outputs.skipped }}"
-            echo "Coverage Tests - ${{ steps.coverageComment.outputs.tests }}"
-            echo "Coverage Time - ${{ steps.coverageComment.outputs.time }}"
-            echo "Not Success Test Info - ${{ steps.coverageComment.outputs.notSuccessTestInfo }}"

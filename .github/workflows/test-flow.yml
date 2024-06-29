@@ -29,7 +29,7 @@ jobs:
       - name: Test with pytest
         run: |
           source "$HOME/.rye/env"
-          rye run test-coverage 
+          rye run test-coverage  | tee .reports/coverage/coverage.txt
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v4
         if: success() || failure()
@@ -40,10 +40,6 @@ jobs:
       - name: Pytest coverage comment
         uses: MishaKav/pytest-coverage-comment@main
         with:
-          pytest-xml-coverage-path: .reports/coverage/coverage.xml
+          pytest-coverage-path: .reports/coverage/coverage.txt
           junitxml-path: .reports/junit/test-results.xml
           github-token: ${{ github.token }}
-      - name:
-        uses: romeovs/lcov-reporter-action@v0.3.1
-        with:
-          lcov-file: .reports/coverage/coverage.lcov

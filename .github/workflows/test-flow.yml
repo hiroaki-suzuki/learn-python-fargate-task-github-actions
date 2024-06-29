@@ -42,4 +42,4 @@ jobs:
         uses: MishaKav/pytest-coverage-comment@main
         with:
           pytest-coverage-path: .reports/coverage/coverage.txt
-          junitxml-path: .reports/junit/test-results.xms
+          junitxml-path: .reports/junit/test-results.xml

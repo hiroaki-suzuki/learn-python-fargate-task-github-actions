@@ -40,8 +40,8 @@ jobs:
       - name: Pytest coverage comment
         uses: MishaKav/pytest-coverage-comment@main
         with:
-          pytest-xml-coverage-path: .report/coverage/pytest-coverage.txt
-          junitxml-path: .report/junit/test-results.xml
+          pytest-xml-coverage-path: .report/coverage/coverage.xml
+          junitxml-path: .reports/junit/test-results.xml
       - name:
         uses: romeovs/lcov-reporter-action@v0.3.1
         with:

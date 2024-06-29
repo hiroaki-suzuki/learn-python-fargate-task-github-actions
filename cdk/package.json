@@ -9,7 +9,7 @@
     "watch": "tsc -w",
     "test": "jest",
     "cdk": "cdk",
-    "cdk:deploy:dev": "npm run cdk -- deploy -c environment=dev",
+    "cdk:deploy:dev": "npm run cdk -- deploy -c environment=dev --require-approval never",
     "cdk:destroy:dev": "npm run cdk -- destroy -c environment=dev"
   },
   "devDependencies": {

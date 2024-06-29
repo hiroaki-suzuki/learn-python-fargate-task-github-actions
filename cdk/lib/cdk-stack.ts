@@ -1,6 +1,7 @@
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import { Network } from './modules/network/network';
+import { Ecs } from './modules/app/ecs';
 
 export interface CdkStackProps extends cdk.StackProps {
   namePrefix: string;

@@ -17,12 +17,36 @@ classifiers = ["Private :: Do Not Upload"]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+
 [tool.rye]
 managed = true
 dev-dependencies = []
+
+[tool.rye.scripts]
+test = { cmd = "pytest --junitxml=.reports/junit/test-results.xml" }
+test-coverage = { cmd = "pytest --junitxml=.reports/junit/test-results.xml --cov=./ --cov-report=html --cov-report=lcov --cov-report=term-missing"}
 
 [tool.hatch.metadata]
 allow-direct-references = true
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/app"]
+
+[tool.coverage.run]
+branch = true
+data_file = ".reports/coverage/.coverage"
+source = [
+  "src",
+  "tests"
+]
+  
+[tool.coverage.report]
+ignore_errors = true
+show_missing = true
+# skip_covered = true
+
+[tool.coverage.html]
+directory = ".reports/coverage/html"
+
+[tool.coverage.lcov]
+output = ".reports/coverage/coverage.lcov"

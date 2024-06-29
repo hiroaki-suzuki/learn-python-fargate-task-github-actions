@@ -13,3 +13,4 @@ mypy_cache/
 .DS_Store
 .reports/
 .coverage
+cdk/cdk.context.json

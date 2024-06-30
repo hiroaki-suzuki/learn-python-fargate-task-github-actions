@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: codebuild-GitHubActionsExampleRunner-${{ github.run_id }}-${{ github.run_attempt }}
     environment: dev
     steps:
       - uses: actions/checkout@v4
